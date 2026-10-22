@@ -371,8 +371,50 @@ void measure_offsets() {
   if (chassis.odom_tracker_right != nullptr) chassis.odom_tracker_right->distance_to_center_set(r_offset);
   if (chassis.odom_tracker_back != nullptr) chassis.odom_tracker_back->distance_to_center_set(b_offset);
   if (chassis.odom_tracker_front != nullptr) chassis.odom_tracker_front->distance_to_center_set(f_offset);
-}
 
+
+}
 // . . .
 // Make your own autonomous functions here!
 // . . .
+
+///
+// see MSpaint file for AutonRoute1
+///
+void autonRoute1() {
+  // -- example
+  //chassis.pid_odom_set(34.85_in, 40, false);
+  //chassis.pid_wait();
+
+  //chassis.pid_turn_set(132.64_deg, 40);
+  //chassis.pid_wait();
+  // -- end example
+
+  // grabber is active(ly holding a pin)
+  // approach pin holder
+  chassis.pid_odom_set(5.71_in, 40, false);
+  chassis.pid_wait();
+
+  // raise up pin (while moving)
+  // lower pin to empty holder height
+  // release grabber
+  // turn around to grab pin
+  chassis.pid_turn_set(-106.00_deg, 40);
+  chassis.pid_wait();
+
+  // approach pin
+  // grab pin + turn around
+  chassis.pid_turn_set(106.00_deg, 40);
+  chassis.pid_wait();
+
+  // turn toward loader
+  chassis.pid_turn_set(104.88_deg, 40);
+  chassis.pid_wait();
+
+  // RUN 
+  chassis.pid_odom_set(226.50_in, 40, false);
+  chassis.pid_wait();
+
+  
+
+}
